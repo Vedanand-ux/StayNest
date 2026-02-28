@@ -44,6 +44,11 @@
           placeholder="image link"
           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
+        <textarea
+          name="description"
+          placeholder="Description the home"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        <%=editing ? home.description : '' %></textarea>
         <input type="submit" value="<%= editing ? "Update Home" : "Add home"%>" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-400 transition duration-300" />
       </form>
     </main>
