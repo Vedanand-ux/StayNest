@@ -37,12 +37,12 @@
             Location: <%= home.location %>
 
             <div class="mt-3 flex gap-3">
-              <a href="/host/edit-home/<%=home.id%>?editing=true"
+              <a href="/host/edit-home/<%=home._id%>?editing=true"
                 class="bg-green-400 text-black px-3 py-3 rounded hover:bg-green-300 transition"
               >
                 Edit
             </a>
-            <form action="/host/delete-home/<%=home.id%>" method="POST">
+            <form action="/host/delete-home/<%=home._id%>" method="POST">
               <button type="submit"
                 class="bg-red-400 text-black px-3 py-3 rounded hover:bg-red-300 transition"
               >

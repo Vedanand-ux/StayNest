@@ -26,7 +26,7 @@
           Rating: ⭐ <%= home.rating %> <br />
           Location: <%= home.location %>
           <div>
-            <a class="bg-blue-400 text-black px-4 py-2 rounded hover:bg-blue-300 transition" href="/homes/<%=home.id %>">Details</a>
+            <a class="bg-blue-400 text-black px-4 py-2 rounded hover:bg-blue-300 transition" href="/homes/<%=home._id %>">Details</a>
             <div class="mt-2">
               <%- include('../partials/favourite',{home: home}) %>
             </div>

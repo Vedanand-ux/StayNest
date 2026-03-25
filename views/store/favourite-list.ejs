@@ -22,7 +22,7 @@
     Location: <%= home.location %>
     
   </div>
-  <form action="/favourites/delete/<%=home.id%>" method="POST">
+  <form action="/favourites/delete/<%=home._id%>" method="POST">
     <button class="bg-red-300 p-2"
     type="submit">Remove from Favourite</button>
   </form>

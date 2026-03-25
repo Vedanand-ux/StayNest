@@ -5,7 +5,7 @@
     <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
       <h1 class="text-3xl font-bold mb-6 text-center text-gray-800"><%= editing ? "Edit" : "Register"%> Your Home on AirBnB</h1>
       <form action="/host/<%= editing ? "edit-home": "add-home"%>" method="POST" class="max-w-md mx-auto">
-        <input type = "hidden" value="<%= editing ? home.id : " " %>">
+        <input type="hidden" name="_id" value="<%= editing ? home._id : '' %>">
         <input
           type="text"
           name="houseName"
@@ -45,9 +45,8 @@
           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <textarea
-          name="description"
-          placeholder="Description the home"
-          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+  name="description"
+  class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><%= editing ? home.description : '' %></textarea>
         <%=editing ? home.description : '' %></textarea>
         <input type="submit" value="<%= editing ? "Update Home" : "Add home"%>" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-400 transition duration-300" />
       </form>
