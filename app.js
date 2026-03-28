@@ -6,8 +6,9 @@ const path = require('path');
 const express = require('express');
 
 //Local Module
-const storeRouter = require("./routes/storeRouter")
-const hostRouter = require("./routes/hostRouter")
+const storeRouter = require("./routes/storeRouter");
+const hostRouter = require("./routes/hostRouter");
+const authRouter = require("./routes/authRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controller/errors");
 
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(express.urlencoded());
+app.use(authRouter);
 app.use(storeRouter);
 app.use("/host", hostRouter);
 
@@ -28,7 +30,7 @@ app.use(express.static(path.join(rootDir, 'public')))
 app.use(errorsController.pageNotFound);
 
 const PORT = 3000;
-const DB_PATH = "";
+const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/?appName=vinny";
 
 mongoose.connect(DB_PATH).then(() => {
   app.listen(PORT, () => {
