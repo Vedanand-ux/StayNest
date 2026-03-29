@@ -7,7 +7,8 @@ exports.getIndex = (req, res, next) => {
   Home.find().then((registeredHomes) => {
     res.render('store/index', { 
     registeredHomes: registeredHomes, 
-    pageTitle: 'airbnb Home'
+    pageTitle: 'airbnb Home',
+    isLoggedIn: req.isLoggedIn,
     });
   })
 }
@@ -16,7 +17,8 @@ exports.getHomes = (req, res, next) => {
   Home.find().then((registeredHomes) => {
     res.render('store/home-list', { 
     registeredHomes: registeredHomes, 
-    pageTitle: 'Homes List'
+    pageTitle: 'Homes List',
+    isLoggedIn: req.isLoggedIn,
     });
   });
 }
@@ -24,6 +26,7 @@ exports.getHomes = (req, res, next) => {
 exports.getBookings = (req, res, next) => {
     res.render('store/bookings', {  
     pageTitle: 'My Bookings',
+    isLoggedIn: req.isLoggedIn,
   });
 }
 
@@ -81,7 +84,8 @@ exports.getHomeDetails = (req, res, next) => {
       console.log("Home details found", home);
       res.render('store/home-detail', { 
       home: home,
-      pageTitle: 'home detail'
+      pageTitle: 'home detail',
+      isLoggedIn: req.isLoggedIn,
       });
     }
 

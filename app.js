@@ -21,8 +21,23 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(express.urlencoded());
+
+app.use((req,res,next) => {
+  console.log("cookie check middleware",req.get("Cookie"));
+  req.isLoggedIn = req.get('cookie') ? req.get('cookie').split("=")[1] === 'true' : false;
+  next();
+})
+
+
 app.use(authRouter);
 app.use(storeRouter);
+app.use("host",(req,res,next) =>{
+  if(req.isLoggedIn){
+    next();
+  }else{
+  res.redirect("/login");
+  }
+});
 app.use("/host", hostRouter);
 
 app.use(express.static(path.join(rootDir, 'public')))
@@ -30,7 +45,7 @@ app.use(express.static(path.join(rootDir, 'public')))
 app.use(errorsController.pageNotFound);
 
 const PORT = 3000;
-const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/?appName=vinny";
+const DB_PATH = "";
 
 mongoose.connect(DB_PATH).then(() => {
   app.listen(PORT, () => {
