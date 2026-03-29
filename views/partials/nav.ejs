@@ -5,53 +5,44 @@
         <a
           href="/"
           class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-          >airbnb</a
-        >
+        >airbnb</a>
       </li>
+
       <% if (isLoggedIn) { %>
         <li>
-          <a
-            href="/homes"
-            class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >Homes List</a
-          >
+          <a href="/homes" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">Homes List</a>
         </li>
         <li>
-          <a
-            href="/favourites"
-            class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >Favourites</a
-          >
+          <a href="/favourites" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">Favourites</a>
         </li>
         <li>
-          <a
-            href="/bookings"
-            class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >Bookings</a
-          >
+          <a href="/bookings" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">Bookings</a>
         </li>
         <li>
-          <a
-            href="/host/host-home-list"
-            class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >Host Homes</a
-          >
+          <a href="/host/host-home-list" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">Host Homes</a>
         </li>
         <li>
-          <a
-            href="/host/add-home"
-            class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >Add Home</a
-          >
+          <a href="/host/add-home" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">Add Home</a>
         </li>
       <% } %>
+
       <li>
-        <a
-          href="/login"
-          class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-          >Login</a
-        >
+        <% if (!isLoggedIn) { %>
+          <a href="/login" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">
+            Login
+          </a>
+        <% } else { %>
+          <form action="/logout" method="POST">
+            <button
+              type="submit"
+              class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
+            >
+              Logout
+            </button>
+          </form>
+        <% } %>
       </li>
+
     </ul>
   </nav>
 </header>
