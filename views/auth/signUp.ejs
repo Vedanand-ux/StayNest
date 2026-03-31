@@ -1,0 +1,80 @@
+<%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Register as new User</h1>
+      <form action="/signup" method="POST" class="max-w-md mx-auto">
+
+      <% if (typeof errors != 'undefined' && errors && errors.length > 0) { %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4  py-3 rounded relative mb-4" role="alert">
+            <ul class="list-disc list-inside space-y-1">
+              <% errors.forEach(error => { %>
+                <li><%= error %></li>
+              <% }); %>
+            </ul>
+          </div>
+      <% } %>
+       
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value="<%= oldInput.firstName ? oldInput.firstName : '' %>"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required/>
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value="<%= oldInput.lastName ? oldInput.lastName : '' %>"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="test@pop.com"
+          value="<%= oldInput.email ? oldInput.email : '' %>"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required/>
+        
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required/>
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+          class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          required/>
+
+        <div class="mb-3">
+          <p>User Type:</p>
+          <label>
+            <input
+            type="radio" name="userType" value="guest" id="guest" class="mr-2" checked = " <%= oldInput.userType === "guest"%>"/>
+            <span>Guest</span>
+          </label>
+        </div>  
+        <div class="mb-3">
+          <label>
+            <input 
+            type = "radio" name="userType" value ="host" id="host" class="mr-2" checked = "<%= oldInput.userType === "host"%>"/>
+            <span>Host</span>
+          </label>
+        </div>
+        
+        <div class="mb-3">
+        <input 
+          type = "checkbox" name="terms" id="terms" class="mr-2" checked/>
+          <span>I agree to the Terms and Conditions</span>
+          </div>
+
+        <input type="submit" value="Register" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-400 transition duration-300" />  
+      </form>
+    </main>
+  </body>
+</html>

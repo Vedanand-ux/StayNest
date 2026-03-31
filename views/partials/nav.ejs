@@ -26,23 +26,30 @@
         </li>
       <% } %>
 
-      <li>
+      
         <% if (!isLoggedIn) { %>
-          <a href="/login" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">
-            Login
-          </a>
+          <li>
+            <a href="/signup" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">
+              SignUp
+            </a>
+          </li>
+          <li>
+            <a href="/login" class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300">
+              Login
+            </a>
+          </li>
         <% } else { %>
-          <form action="/logout" method="POST">
-            <button
-              type="submit"
-              class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
-            >
-              Logout
-            </button>
-          </form>
+          <li>
+            <form action="/logout" method="POST">
+              <button
+                type="submit"
+                class="hover:bg-blue-300 py-2 px-4 rounded transition duration-300"
+              >
+                Logout
+              </button>
+            </form>
+          </li>
         <% } %>
-      </li>
-
     </ul>
   </nav>
 </header>

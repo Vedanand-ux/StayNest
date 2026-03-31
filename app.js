@@ -6,7 +6,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const mongoDBStore = require("connect-mongodb-session")(session);
-const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/?appName=vinny";
+const DB_PATH = "";
 
 //Local Module
 const storeRouter = require("./routes/storeRouter");
