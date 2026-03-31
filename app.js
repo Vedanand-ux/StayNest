@@ -6,7 +6,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const mongoDBStore = require("connect-mongodb-session")(session);
-const DB_PATH = "";
+const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/?appName=vinny";
 
 //Local Module
 const storeRouter = require("./routes/storeRouter");
@@ -45,7 +45,7 @@ app.use((req,res,next) => {
 
 app.use(authRouter);
 app.use(storeRouter);
-app.use("host",(req,res,next) =>{
+app.use("/host",(req,res,next) =>{
   if(req.isLoggedIn){
     next();
   }else{
