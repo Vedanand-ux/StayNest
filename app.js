@@ -6,7 +6,7 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const mongoDBStore = require("connect-mongodb-session")(session);
-const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/?appName=vinny";
+const DB_PATH = "mongodb+srv://root:root@vinny.ceug97y.mongodb.net/test";
 
 //Local Module
 const storeRouter = require("./routes/storeRouter");
@@ -32,13 +32,14 @@ app.use(express.urlencoded());
 app.use(session({
   secret: "my secret",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: store
 }));
 
+
 app.use((req,res,next) => {
-  //console.log("cookie check middleware",req.get("Cookie"));
-  req.isLoggedIn = req.session.isLoggedIn;
+  res.locals.isLoggedIn = req.session.isLoggedIn;
+  res.locals.user = req.session.user;
   next();
 })
 

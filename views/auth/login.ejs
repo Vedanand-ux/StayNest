@@ -4,13 +4,13 @@
     <%- include('../partials/nav') %>
     <main class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
       <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Login with your Info</h1>
-      <form action="/login"method="POST" class="max-w-md mx-auto">
-       
+      <form action="/login" method="POST" class="max-w-md mx-auto">
+          <%- include('../partials/errors') %>
         <input
-          type="text"
-          name="username"
-         
-          placeholder="email/username"
+          type="email"
+          name="email"
+          value="<%=  oldInput.email ? oldInput.email : '' %>"
+          placeholder="Enter your email"
           class="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <form action="/login" method="POST" class="max-w-md mx-auto">
