@@ -112,7 +112,8 @@ exports.postSignUp = [
         currentPage: "signup",
         isLoggedIn: false,
         errors: [err.message],
-        oldInput: { firstName, lastName, email, userType }
+        oldInput: { firstName, lastName, email, userType },
+        user: {},
       });
     })
 
@@ -148,16 +149,17 @@ exports.postLogin = async (req, res, next) => {
 
   req.session.isLoggedIn = true;
   req.session.user = user;
-  await req.session.save(() => {
-  res.redirect("/");
-});
-
-  
+  req.session.save((err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
 };
 
 
 
 exports.postLogout = (req, res, next) => {
-  res.clearCookie("isLoggedIn");  
-  res.redirect("/login");
+  req.session.destroy((err) => {
+    if (err) return next(err);
+    res.redirect("/login");
+  });
 };
